@@ -9,18 +9,29 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
-app.use(cors());
+// Configuração de CORS
+// Substitua pelo domínio do seu frontend em produção
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    credentials: true,
+  })
+);
+
+// Permite receber JSON no body das requisições
 app.use(express.json());
 
-// Test route
+// Rota de teste
 app.get("/", (req, res) => {
   res.json({ success: true, message: "API Prajá funcionando!" });
 });
 
-// Routes
+// Rotas de autenticação e lojas
 app.use("/api/auth", authRoutes);
 app.use("/api/shops", shopRoutes);
 
+// Porta do servidor (Render fornece via env)
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
