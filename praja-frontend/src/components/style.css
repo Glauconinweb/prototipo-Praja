@@ -1,0 +1,219 @@
+/* Shops_delivery.css - Layout estilo aplicativo de delivery */
+
+.delivery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  background-color: #f8f9fa;
+}
+
+.delivery-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.delivery-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 0.5rem 0;
+}
+
+.delivery-header p {
+  color: #718096;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Grid das lojas - estilo delivery */
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* Card da loja - estilo delivery compacto */
+.shop-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+}
+
+.shop-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-color: #e53e3e;
+}
+
+/* Container da imagem */
+.shop-image-container {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+}
+
+.shop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.shop-card:hover .shop-image {
+  transform: scale(1.05);
+}
+
+/* Informações da loja */
+.shop-info {
+  padding: 1rem;
+}
+
+.shop-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.shop-description {
+  font-size: 0.85rem;
+  color: #718096;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Detalhes de entrega */
+.shop-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #4a5568;
+}
+
+.delivery-time {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.delivery-fee {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: #e53e3e;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .delivery-container {
+    padding: 0.5rem;
+  }
+
+  .delivery-header {
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .delivery-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .shops-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+    padding: 0;
+  }
+
+  .shop-image-container {
+    height: 100px;
+  }
+
+  .shop-info {
+    padding: 0.75rem;
+  }
+
+  .shop-name {
+    font-size: 1rem;
+  }
+
+  .shop-description {
+    font-size: 0.8rem;
+  }
+
+  .shop-details {
+    font-size: 0.75rem;
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  .shops-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .shop-card {
+    border-radius: 8px;
+  }
+
+  .shop-image-container {
+    height: 90px;
+  }
+
+  .shop-info {
+    padding: 0.5rem;
+  }
+
+  .shop-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shop-card {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Estados de loading (se necessário) */
+.shop-card.loading {
+  background: #f7fafc;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
