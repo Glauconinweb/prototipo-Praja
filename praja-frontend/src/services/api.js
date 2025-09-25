@@ -1,7 +1,7 @@
-const API_URL = import.meta.env.VITE_API_URL;
+import axios from "axios";
 
-fetch(`${API_URL}/auth/register`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ email, password }),
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL, // usa a URL do .env
 });
+
+export default api;
