@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 // Configuração de CORS
 // Substitua pelo domínio do seu frontend em produção
 const FRONTEND_URL =
-  process.env.FRONTEND_URL || "https://prototipo-praja.onrender.com";
+  process.env.FRONTEND_URL || "https://prototipo-praja-1.onrender.com";
 app.use(
   cors({
     origin: FRONTEND_URL,
